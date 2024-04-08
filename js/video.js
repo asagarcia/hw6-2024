@@ -18,9 +18,12 @@ document.querySelector("#play").addEventListener("click", function() {
     var volumeSpan = document.getElementById("volume");
     var volumeSlider = document.getElementById("slider");
 
+    volumeSpan.textContent = volumeSlider.value + "%";
+
     volumeSlider.addEventListener("input", function() {
         video.volume = volumeSlider.value / 100;
         volumeSpan.textContent = volumeSlider.value;
+        volumeSpan.textContent = volumeSlider.value + "%";
     });
 });
 
