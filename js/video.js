@@ -22,15 +22,16 @@ document.querySelector("#play").addEventListener("click", function() {
 
     volumeSlider.addEventListener("input", function() {
         video.volume = volumeSlider.value / 100;
-        volumeSpan.textContent = volumeSlider.value + "%";
+        volumeSpan.textContent = volumeSlider.value + "%"; 
+    });
 
     document.getElementById("play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-        volumeSpan.textContent = volumeSlider.value + "%";
-        });
+        volumeSpan.textContent = volumeSlider.value + "%"; 
     });
 });
+
 document.querySelector("#pause").addEventListener("click", function() {
     console.log("Pause Video");
 
