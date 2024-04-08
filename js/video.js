@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("slower").addEventListener("click", function() {
         console.log("Slow Down");
-        video.playbackRate -= 0.1; // Reduce playback rate by 10%
+        video.playbackRate -= 0.1;
         console.log("New video speed:", video.playbackRate);
     });
 
@@ -51,34 +51,28 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("skip").addEventListener("click", function() {
         console.log("Advance Video by 10 seconds");
 
-        // Calculate the new time position
         var newTime = video.currentTime + 10;
 
-        // Check if the new time exceeds the video duration
         if (newTime > video.duration) {
-            // If exceeded, set the time to the end of the video
             video.currentTime = 0.0;
             console.log("Video reached the end.");
         } else {
-            // If not exceeded, advance the video by 10 seconds
             video.currentTime = newTime;
         }
 
-        // Log the current location of the video
         console.log("Current video location:", video.currentTime);
 
     });
 
         muteButton.addEventListener("click", function() {
             if (video.muted) {
-                // If video is muted, unmute it
+
                 video.muted = false;
-                muteButton.textContent = "Mute"; // Update button text
+                muteButton.textContent = "Mute";
                 console.log("Video unmuted");
             } else {
-                // If video is not muted, mute it
                 video.muted = true;
-                muteButton.textContent = "Unmute"; // Update button text
+                muteButton.textContent = "Unmute"; 
                 console.log("Video muted");
             }
     });
@@ -86,21 +80,30 @@ document.addEventListener("DOMContentLoaded", function() {
     styledButton.addEventListener("click", function() {
         console.log("Applying oldSchool class");
 
-        // Add the oldSchool class to the video element
         video.classList.add("oldSchool");
 
-        // Log the current state of the oldSchool class
         console.log("Old School mode:", video.classList.contains("oldSchool"));
     });
 
     originalButton.addEventListener("click", function() {
         console.log("Removing oldSchool class");
 
-        // Remove the oldSchool class from the video element
         video.classList.remove("oldSchool");
 
-        // Log the current state of the oldSchool class
         console.log("Old School mode:", video.classList.contains("oldSchool"));
     });
 
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var video = document.getElementById("player1");
+    var volumeSpan = document.getElementById("volume");
+    var volumeSlider = document.getElementById("slider");
+
+    volumeSpan.textContent = volumeSlider.value + "%";
+
+    volumeSlider.addEventListener("input", function() {
+        video.volume = volumeSlider.value / 100;
+        volumeSpan.textContent = volumeSlider.value + "%";
+    });
 });
